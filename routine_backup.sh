@@ -3,25 +3,26 @@
 start() {
     echo "Starting routine backup: "
     if [ ! -f /tmp/routine_backup.pid ]; then
-        touch ./routine_backup.log
-        echo $(python -c "from time import strftime;print '[SITEBAK-INFO] Starting routine backup at %s' % strftime('%Y-%m-%d %H:%M:%S')") >> ./routine_backup.log
+        touch routine_backup.log
+        echo "================================" > routine_backup.log
+        echo $(python -c "from time import strftime;print '[INFO] Starting background routine at %s' % strftime('%Y-%m-%d %H:%M:%S')") >> ./routine_backup.log
         DAYS=`python -c "import config;d=config.ROUTINE_DAYS if 'ROUTINE_DAYS' in config.__dict__ else 7;print d"`
         SECONDS=`echo "${DAYS} * 24 * 60 * 60" | bc`
-        #echo ${SECONDS}
         nohup ./scripts/routine_worker.sh ${SECONDS} >> ./routine_backup.log 2>&1 &
         echo $! > /tmp/routine_backup.pid
         echo "done."
     else
-        echo "Routine backup has already started. Please check routine_backup.log for current status."
+        echo "Background routine has already been started."
+        echo "Please check routine_backup.log for latest message."
     fi
 }
 
 stop() {
+    echo $(python -c "from time import strftime;print '[INFO] Stopping background routine at %s' % strftime('%Y-%m-%d %H:%M:%S')") >> ./routine_backup.log
     echo "Stopping routine backup: "
     kill -9 `cat /tmp/routine_backup.pid` || true
     rm -f /tmp/routine_backup.pid
     echo "done."
-    echo $(python -c "from time import strftime;print '[SITEBAK-INFO] Stopped routine backup at %s' % strftime('%Y-%m-%d %H:%M:%S')") >> ./routine_backup.log
 }
 
 usage() {
