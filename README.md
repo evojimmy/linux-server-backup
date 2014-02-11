@@ -1,5 +1,5 @@
-LAMP server backup tool
-=========================
+Linux server backup
+======================
 
 ## Description
 
@@ -12,7 +12,16 @@ This tool backs up:
 
 Automatic backup can be set running in background.
 
+## Feature
+
++ Automatic backup in background.
++ Special optimized for PHP applications like Wordpress.
+
 ## Preparation
+
+#### Prerequisites
+
++ Python 2.7
 
 #### Setting up backup user for MySQL
 
@@ -47,7 +56,7 @@ Rename `config-example.py` to `config.py` and replace the content properly.
 ./routine_backup.sh
 ````
 
-First backup will not talk place immediately. For example, if `config.ROUTINE_DAYS`
+First backup will not take place immediately. For example, if `config.ROUTINE_DAYS`
 is set to 7, the first backup will start after 7 days.
 
 The log is written into `routine_backup.log`.
