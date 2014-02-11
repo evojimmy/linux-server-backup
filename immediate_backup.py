@@ -38,8 +38,16 @@ def do():
 
 
     # Backup selected files
+    from scripts.widgets.BaseWidget import BaseWidget
+    web_files = []
+    for f in config.WEB_FILES:
+        if isinstance(f, BaseWidget):
+            for ff in f.expand():
+                web_files.append(ff)
+        elif isinstance(f, str):
+            web_files.append(f)
     logging.info('[SITEBAK-INFO] Start backing up user contents at %s' % _now())
-    log = filebackup.do(filelist=config.WEB_FILES, outpath=backup_path,
+    log = filebackup.do(filelist=web_files, outpath=backup_path,
                         name='web_contents', compress_type='gz')
     logging.info(log)
     logging.info('[SITEBAK-INFO] Finish backing up user contents at %s' % _now())
