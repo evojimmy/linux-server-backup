@@ -1,0 +1,6 @@
+# emacs
+*~
+
+*.pyc
+backups
+config.py
