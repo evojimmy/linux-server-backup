@@ -10,6 +10,8 @@ This tool backs up:
 + Selected web contents
 + Configuration file for this tool
 
+Automatic backup can be set running in background.
+
 ## Preparation
 
 #### Setting up backup user for MySQL
@@ -33,6 +35,19 @@ Rename `config-example.py` to `config.py` and replace the content properly.
 
 ## Usage
 
+#### Immediate backup
+
 ````
 ./immediate_backup.py
 ````
+
+#### Routine backup
+
+````
+./routine_backup.sh
+````
+
+First backup will not talk place immediately. For example, if `config.ROUTINE_DAYS`
+is set to 7, the first backup will start after 7 days.
+
+The log is written into `routine_backup.log`.
