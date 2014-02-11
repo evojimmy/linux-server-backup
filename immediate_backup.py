@@ -28,11 +28,11 @@ def do():
     logging.info(log)
     logging.info('[SITEBAK-INFO] Finish dumping MySQL at %s' % _now())
 
-    # Backup Apache configuration
+    # Backup engine configuration
     logging.info('[SITEBAK-INFO] Start backing up Apache configuration at %s' % _now())
     from scripts import filebackup
-    log = filebackup.do(filelist=config.APACHE_FILES, outpath=backup_path,
-                        name='apache')
+    log = filebackup.do(filelist=config.ENGINE_FILES, outpath=backup_path,
+                        name='engine')
     logging.info(log)
     logging.info('[SITEBAK-INFO] Finish backing up Apache configuration at %s' % _now())
 

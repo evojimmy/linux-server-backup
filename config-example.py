@@ -6,9 +6,9 @@ MYSQLDUMP = {
     'password': 'backup'
 }
 
-## Be sure that APACHE_FILES and WEB_FILES are lists of folders or files.
+## Be sure that ENGINE_FILES and WEB_FILES are lists of folders or files.
 
-APACHE_FILES = ('/path/to/apache/conf', )
+ENGINE_FILES = ('/path/to/apache/conf', '/path/to/php/ini')
 
 WEB_FILES = (
 '/path/to/web/contents',

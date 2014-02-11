@@ -5,7 +5,7 @@ LAMP server backup tool
 
 This tool backs up:
 
-+ Apache configuration
++ Web engine configuration (apache, php, ...)
 + All databases in MySQL
 + Selected web contents
 + Configuration file for this tool
