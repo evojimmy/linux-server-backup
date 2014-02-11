@@ -53,7 +53,7 @@ Rename `config-example.py` to `config.py` and replace the content properly.
 #### Routine backup
 
 ````
-./routine_backup.sh
+./routine_backup.sh {start|stop|status}
 ````
 
 First backup will not take place immediately. For example, if `config.ROUTINE_DAYS`

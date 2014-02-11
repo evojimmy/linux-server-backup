@@ -25,9 +25,17 @@ stop() {
     echo "done."
 }
 
+status() {
+    if [ -f /tmp/routine_backup.pid ]; then
+        echo "Running. PID: `cat /tmp/routine_backup.pid`"
+    else
+        echo "Stopped."
+    fi
+}
+
 usage() {
     N=$(basename "$0")
-    echo "Usage: $N {start|stop}" >&2
+    echo "Usage: $N {start|stop|status}" >&2
     exit 1
 }
 
@@ -40,6 +48,9 @@ case "$1" in
         ;;
     stop)
         stop
+        ;;
+    status)
+        status
         ;;
     *)
         usage
