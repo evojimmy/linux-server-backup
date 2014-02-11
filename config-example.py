@@ -1,6 +1,9 @@
 # Example configuration file.
 from scripts.widgets import *
 
+# For routine backup
+ROUTINE_DAYS = 7
+
 MYSQLDUMP = {
     'user': 'backup',
     'password': 'backup'
