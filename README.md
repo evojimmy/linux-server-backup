@@ -16,6 +16,7 @@ Automatic backup can be set running in background.
 
 + Automatic backup in background.
 + Special optimized for PHP applications like Wordpress.
++ FTP upload backup to cloud storage
 
 ## Preparation
 
@@ -38,9 +39,15 @@ LOCK TABLES ,
 SHOW VIEW ON * . * TO  'dbbackup'@'localhost' IDENTIFIED BY  '***' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 ````
 
-#### Write `config.py`
+#### Create `config.py`
 
 Rename `config-example.py` to `config.py` and replace the content properly.
+
+#### Create `upload.py` (optional)
+
+If automatically upload is needed, 
+rename `upload-example.py` to `upload.py` and replace the content properly.
+
 
 ## Usage
 

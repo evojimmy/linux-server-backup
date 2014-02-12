@@ -11,5 +11,4 @@ def do(user, password, outpath):
         subprocess.check_output('rm /tmp/mysql.sql', shell=True)
     except subprocess.CalledProcessError as e:
         log.append('[ERROR] %s' % str(e))
-    log.append('')
     return '\n'.join(log)

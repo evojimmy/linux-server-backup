@@ -4,4 +4,5 @@
 *.pyc
 backups
 config.py
+upload.py
 routine_backup.log

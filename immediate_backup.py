@@ -60,5 +60,19 @@ def do():
     logging.info(log)
     logging.info('[INFO] Finish backing up config.py at %s' % _now())
 
+    # Upload if set in upload.py
+    try:
+        import upload
+        if 'do' not in upload.__dict__:
+            raise ImportError("Failed to find upload.do")
+        logging.info('[INFO] Uploading is configured. Start uploading...')
+        log = upload.do(backup_path)
+        logging.info(log)
+        logging.info('[INFO] Done.')
+    except ImportError:
+        logging.info('[INFO] Uploading is not configured. Done.')
+    except Exception as e:
+        logging.info('[ERROR] Error while uploading: %s' % e.message)
+
 if __name__ == '__main__':
     do()

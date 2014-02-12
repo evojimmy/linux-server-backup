@@ -25,5 +25,4 @@ def do(filelist, outpath, name, compress_type=''):
     except subprocess.CalledProcessError as e:
         log.append('[ERROR] %s' % str(e))
 
-    log.append('')
     return '\n'.join(log)
