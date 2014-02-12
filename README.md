@@ -23,6 +23,7 @@ Automatic backup can be set running in background.
 #### Prerequisites
 
 + Python 2.7
++ lftp (required by FTP upload)
 
 #### Setting up backup user for MySQL
 
