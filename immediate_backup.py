@@ -19,14 +19,16 @@ def do():
     import config
     logging.info('[INFO] Start backup at %s' % _now())
 
-    # Dump MYSQL
-    logging.info('[INFO] Start dumping MySQL at %s' % _now())
-    from scripts import mysqldump
-    log = mysqldump.do(user=config.MYSQLDUMP['user'],
-                       password=config.MYSQLDUMP['password'],
-                       outpath=backup_path)
-    logging.info(log)
-    logging.info('[INFO] Finish dumping MySQL at %s' % _now())
+
+    if 'MYSQLDUMP' in config.__dict__:
+        # Dump MYSQL
+        logging.info('[INFO] Start dumping MySQL at %s' % _now())
+        from scripts import mysqldump
+        log = mysqldump.do(user=config.MYSQLDUMP['user'],
+                           password=config.MYSQLDUMP['password'],
+                           outpath=backup_path)
+        logging.info(log)
+        logging.info('[INFO] Finish dumping MySQL at %s' % _now())
 
     # Backup engine configuration
     logging.info('[INFO] Start backing up engine configuration at %s' % _now())

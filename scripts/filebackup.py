@@ -20,9 +20,13 @@ def do(filelist, outpath, name, compress_type=''):
             log.append('[WARN] Ignore non-existing path: %s' % f)
 
     cmd = 'tar -%scf %s%s%s.tar%s %s' % (tar_param, outpath, os.sep, name, compress_type, ' '.join(files))
-    try:
-        subprocess.check_output(cmd, shell=True)
-    except subprocess.CalledProcessError as e:
-        log.append('[ERROR] %s' % str(e))
+
+    status = os.system(cmd)
+    if status != 0:
+        log.append('[ERROR] errno=%s when executing %s' % (status, cmd))
+    #try:
+    #    subprocess.check_output(cmd, shell=True)
+    #except subprocess.CalledProcessError as e:
+    #    log.append('[ERROR] %s' % str(e))
 
     return '\n'.join(log)
