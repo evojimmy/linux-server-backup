@@ -4,6 +4,7 @@ from scripts.widgets import *
 # For routine backup
 ROUTINE_DAYS = 7
 
+# If you don't have MySQL, remove this variable.
 MYSQLDUMP = {
     'user': 'backup',
     'password': 'backup'
