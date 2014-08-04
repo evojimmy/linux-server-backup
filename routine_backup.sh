@@ -45,7 +45,7 @@ usage() {
 }
 
 getinstance() {
-    for pid in `ps | grep routine_worker | cut -f2 -d ' '`; do
+    for pid in `ps aux | grep routine_worker --color=never | awk '{print $2}'`; do
         if [ ! -z $(isauthentic $pid) ]; then
             echo $pid;
             exit;
